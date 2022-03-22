@@ -1,0 +1,107 @@
+.bodyFont
+{
+    font-family: Helvetica;
+}
+
+#welcome
+{
+    text-align: center;
+    font-size: 5em;
+    color: #FF9900;
+}
+
+img
+{
+    height: 12em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#signUpHeader
+{
+    text-align: center;
+    font-size: 3em;
+    padding-bottom: 1em;
+}
+
+.test
+{
+    display: block;
+    text-align: center;
+}
+
+.inputs
+{
+    font-weight: bold;
+    font-size: 1em;
+    padding-bottom: 4em;
+    padding-right: 2em;
+    display: inline-block;
+}
+
+input[placeholder]
+{
+    font-size: 1em;
+    padding: 1em;
+    width: 50%;
+    border-radius: .25em;
+    border: .15em solid black;
+}
+
+input[placeholder]:focus
+{
+    outline: none !important;
+    border: .15em solid #1434A4;
+}
+
+table
+{
+    width: 75%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a:hover
+{
+    color: #FF9900;
+}
+
+th
+{
+    height: 65px;
+    border: 1px solid black;
+}
+
+tr, td
+{
+    height: 50px;
+    border: 1px solid black;
+}
+
+button
+{
+    background-color: #FF9900;
+    border: none;
+    color: white;
+    padding: 1em 2em;
+    border-radius: .25em;
+    text-align: center;
+    font-size: 1em;
+    margin: 0 auto;
+    display: block;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+button:hover
+{
+    background-color: #df8600;
+}
+
+button:active
+{
+    background-color: #a06000;
+}

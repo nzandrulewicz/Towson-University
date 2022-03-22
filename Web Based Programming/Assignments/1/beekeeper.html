@@ -1,0 +1,103 @@
+<!-- Nick Andrulewicz -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Assignment 1</title>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="beekeeper.css">
+    </head>
+
+    <body class="bodyFont">
+        <h1 id="welcome">Welcome to BeeKeeper!</h1>
+
+        <img src="logo.png">
+        <!-- Image Source: https://www.freepnglogos.com/images/bee-18935.html -->
+
+        <br><br>
+        <hr></hr>
+        <br>
+
+        <h1 id="signUpHeader">Sign Up Below</h1>
+
+        <form class="test">
+            <!-- TEXT INPUTS -->
+            <label for="username" class="inputs">Username</label>
+            <input type="text" placeholder="Enter Username">
+            <br>
+
+            <label for="email" class="inputs">Email Address</label>
+            <input type="text" placeholder="Enter Email Address">
+            <br>
+
+            <label for="birthday" class="inputs">Birthday</label>
+            <input type="date" placeholder="Enter Birthday">
+            <br>
+
+            <label for="password" class="inputs">Password</label>
+            <input type="password" placeholder="Enter Password">
+            <br>
+
+            <label for="verifyPassword" class="inputs">Verify Password</label>
+            <input type="password" placeholder="Re-Enter Password">
+            <br>
+
+            <!-- RADIO INPUTS -->
+            <label class="inputs">Desired Account Type</label>
+
+            <input type="radio" name="selection" checked="checked"> <!-- "checked" forces initial selection -->
+            <label for="personal">Personal</label>
+
+            <input type="radio" name="selection">
+            <label for="business">Business</label>
+
+            <input type="radio" name="selection">
+            <label for="enterprise">Enterprise</label>
+
+            <input type="radio" name="selection">
+            <label for="other">Other</label>
+        </form>
+
+        <!-- PRICING FIELD AND TABLE -->
+        <form>
+            <fieldset>
+                <legend>Pricing</legend>
+                <table>
+                    <caption>Personal accounts allow only 1 private
+                        repo, please visit our <a href="https://www.amazon.com" target="_blank">main site</a> for more information</caption>
+                    
+                    <!-- HEADERS -->
+                    <tr>
+                        <th></th>
+                        <th>Personal (1-3 users)</th>
+                        <th>Business (4-20 users)</th>
+                        <th>Enterprise (21+ users)</th>
+                    </tr>
+
+                    <!-- CONTENT -->
+                    <tr>
+                        <td>1 Repo</td>
+                        <td>Free</td>
+                        <td>$12 repo/month</td>
+                        <td rowspan="3">Contact Sales</td>
+                    </tr>
+                    <tr>
+                        <td>2-9 Repos</td>
+                        <td>$8 repo/month</td>
+                        <td>$10 repo/month</td>
+                    </tr>
+                    <tr>
+                        <td>10+ Repos</td>
+                        <td>$6 repo/month</td>
+                        <td>$8 repo/month</td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <form action="beekeeper_completed.html" method="get">
+            <button name="submit" type="submit">Submit</button>
+        </form>
+    </body>
+</html>
