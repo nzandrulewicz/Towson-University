@@ -1,7 +1,11 @@
-import java.util.*; // Uses Iterator and LinkedList
+import java.util.*;
 
-public class Menu implements Iterable<Object>
+public class Menu
 {
+	// MenuItem[] menuItems;
+	ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+	int numberOfItems = 0;
+	
 	// Static Constants
 	// These are to be passed as an argument when requesting an ItemIterator
 	public static final int APPETIZERS = 1;
@@ -10,45 +14,43 @@ public class Menu implements Iterable<Object>
 	public static final boolean HEART_HEALTHY = true;
 	public static final boolean NOT_HEART_HEALTHY = false;
 	
-	
-	ArrayList<Object> menuItems = new ArrayList<Object>();
-	
-	public void add(String foodName, int foodType, boolean heartHealthy, String price)
+	public Menu()
 	{
-		Collections.addAll(menuItems, foodName, foodType, heartHealthy, price);
+        menuItems = new ArrayList<MenuItem>();
+    	}
+	
+	public void add(String foodName, int foodType, boolean heartHealthy, String foodPrice) 
+	{
+		MenuItem newItem = new MenuItem(foodName, foodType, heartHealthy, foodPrice);
+		
+		menuItems.add(newItem);
 	}
 
-	@Override
-	public Iterator<Object> iterator()
+	private class AllItemsIterator implements MenuIterator
 	{
-		return new ArrayIterator(menuItems);
+		int current = 0;
+		
+		public boolean hasNext() 
+		{
+			if (current > menuItems.size() - 1 || menuItems.get(current) == null)
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+
+		public MenuItem next() 
+		{
+			return menuItems.get(current++);
+		}
+		
 	}
 	
-	private class ArrayIterator implements Iterator<Object>
-    {
-		private ArrayList<Object> menuItems = new ArrayList<Object>();
-		private int current = 0;
-		
-		public ArrayIterator(ArrayList<Object> menuItem)
-		{
-			this.menuItems = menuItem;
-		}
-		
-		@Override
-		public Object next()
-		{
-			Object menuItem = menuItems.get(current);
-			current++;
-			return menuItem;
-		}
-		
-		@Override
-		public boolean hasNext() {
-			if (current >= menuItems.size() || menuItems.get(current) == null)
-    		{
-    			return false;
-    		}
-			return true;
-		}		
-    }
+	public MenuIterator getAllItemsIterator() 
+	{
+		return new AllItemsIterator();
+	}
 }
