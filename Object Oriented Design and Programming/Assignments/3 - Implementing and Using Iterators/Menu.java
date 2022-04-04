@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Menu
 {
-	// MenuItem[] menuItems;
 	ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
 	
 	// Static Constants
@@ -23,6 +22,11 @@ public class Menu
 		MenuItem newItem = new MenuItem(foodName, foodType, heartHealthy, foodPrice);
 		
 		menuItems.add(newItem);
+	}
+	
+	public void remove(MenuItem menuItem) 
+	{
+		menuItems.remove(menuItem);
 	}
 
 	// ALL MENU ITEMS
@@ -78,6 +82,8 @@ public class Menu
 		{
 			return menuItems.get(current++);
 		}
+
+
 	}
 		
 	public MenuIterator getItemsIterator(int foodType) 
