@@ -26,7 +26,7 @@ public class MenuClient
 		System.out.println("3) Display Main Dishes");
 		System.out.println("4) Display Desserts");
 		System.out.println("5) Display Heart Healthy Items");
-		System.out.println("6) Display Items Under A Price");
+		System.out.println("6) Display All Main Dishes Under A Price");
 		System.out.println("7) Add A Menu Item");
 		System.out.println("8) Remove A Menu Item");
 		System.out.println();
@@ -207,7 +207,7 @@ public class MenuClient
 		actionMenu(nicksMenu);
 	}
 	
-	// ITEMS UNDER PRICE
+	// MAIN DISHES UNDER PRICE
 	public static void displayItemsUnderPrice(Menu nicksMenu, String maxPrice)
 	{
 		MenuItem menuItem;
@@ -215,7 +215,7 @@ public class MenuClient
 		MenuIterator itr = nicksMenu.getPriceIterator(maxPrice);
 		
 		System.out.println("============================");
-		System.out.println("ALL ITEMS UNDER $" + maxPrice);
+		System.out.println("ALL MAIN DISHES UNDER $" + maxPrice);
 		System.out.println("----------------------------");
 		
 		while (itr.hasNext())
@@ -225,7 +225,7 @@ public class MenuClient
 			double foodPrice = Double.parseDouble(menuItem.getFoodPrice());
 			double dMaxPrice = Double.parseDouble(maxPrice);
 			
-			if (foodPrice < dMaxPrice)
+			if (foodPrice < dMaxPrice && menuItem.getFoodType() == Menu.MAIN_DISH)
 			{
 				System.out.println(menuItem.getFoodName() + " $" + menuItem.getFoodPrice());
 			}
@@ -322,10 +322,6 @@ public class MenuClient
 		cin.nextLine(); // This line prevents Java from skipping an input while allowing spaces in the foodName string.
 		String foodName = cin.nextLine(); // Actual user input line.
 		System.out.println();
-		
-		
-		System.out.println(foodName);
-		
 		
 		MenuItem menuItem;
 		MenuIterator itr = nicksMenu.getAllItemsIterator();
