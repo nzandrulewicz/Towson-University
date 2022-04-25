@@ -56,41 +56,60 @@ function artistAndSong(artistRequest, musicArray)
     console.log(musicArray);
 
     var transporter = nodemailer.createTransport(smtpConfig);
-
+    
     var artistArrayItems = "";
-    for (var i = 0; i < artistRequest.length; i++)
+
+    if (musicArray.length == 0)
     {
-        if (artistRequest[i+1])
+        console.log("Your specified artist(s) are not listed in the top 25.")
+    }
+    else
+    {
+        if (artistRequest.length == 1)
         {
-            artistArrayItems += artistRequest[i] + " and ";
+            artistArrayItems += artistRequest[0];
+        }
+        else if (artistRequest.length == 2)
+        {
+            artistArrayItems += artistRequest[0] + " and " + artistRequest[1];
         }
         else
         {
-            artistArrayItems += artistRequest[i];
+            for (var i = 0; i < artistRequest.length; i++)
+            {
+                if (artistRequest[i+1])
+                {
+                    artistArrayItems += artistRequest[i] + ", ";
+                }
+                else
+                {
+                    artistArrayItems += " and " + artistRequest[i];
+                }
+            }
         }
-    }
-
-    var musicArrayItems = "";
-    for (var i = 0; i < musicArray.length; i++)
-    {
-        if  (i % 2 == 0)
+    
+        var musicArrayItems = "";
+        for (var i = 0; i < musicArray.length; i++)
         {
-            musicArrayItems += "<b>" + musicArray[i] + ": " + "</b>" + musicArray[i+1] + "<br>";
+            if  (i % 2 == 0)
+            {
+                musicArrayItems += "<b>" + musicArray[i] + ": " + "</b>" + "<i>" + musicArray[i+1] + "</i>" + "<br>";
+            }
         }
+
+        var mailOptions = {
+            from: jsonData.from,
+            to: jsonData.to,
+            subject: "Your artist(s) are: " + artistArrayItems,
+            html: musicArrayItems
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
     }
-
-    var mailOptions = {
-        from: jsonData.from,
-        to: jsonData.to,
-        subject: "Your artists are: " + artistArrayItems,
-        html: musicArrayItems
-    };
-
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
 }
